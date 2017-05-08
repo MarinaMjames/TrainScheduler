@@ -2,8 +2,8 @@
 <html>
 <head>
 	<title>Train Scheduler</title>
-	<!-- Materialize Link -->
-  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+	<!-- Bootstrap Link -->
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<!--Reset CSS Link -->
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 	<!-- Custom CSS Link -->
@@ -12,9 +12,61 @@
 	<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
 </head>
 <body>
+<!-- Jumbotron -->
+<div class="jumbotron">
+  <h1>Train Schedule</h1>
+  <p>Find out when your ride will come!</p>
+</div>
+<!-- Table to input data entered in the input -->
+<div class="container">
+	<div class="panel panel-primary">
+        <div class="panel-heading">Train Schedule: 
+        </div>
+        <div class="table table-bordered">
+            <table class="table" id="dataTable">
+                <thead>
+                    <tr>
+                      	<th>Train Name</th>
+                        <th>Destination</th>
+                       	<th>Frequency (min)</th>
+                       	<th>Next Arrival</th>
+                       	<th>Minutes Away</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>    
+</div> 
 
+<!-- Input information -->
+<div class="container">
+	<div class="panel panel-primary">
+        <div class="panel-heading">Add Train: 
+        </div>
+        <div class="table table-bordered">
+			<form>
+				<div class="form-group">
+   					<label for="train-name">Train Name</label>
+    					<input type="text" class="form-control" id="trainName" placeholder="">
+  				</div>
+  				<div class="form-group">
+   					<label for="destination">Destination</label>
+    					<input type="text" class="form-control" id="destination" placeholder="">
+  				</div>
+  				<div class="form-group">
+   					<label for="train-time">First Train Time (HH:mm - military time)</label>
+    					<input type="text" class="form-control" id="trainTime" placeholder="">
+  				</div>
+  				<div class="form-group">
+   					<label for="frequency">Frequency (min)</label>
+    					<input type="text" class="form-control" id="frequency" placeholder="">
+  				</div>
+					<button type="submit" class="btn btn-default">Submit</button>
+			</form>
 
-
+		</div>
+	</div>
+</div>
 
 <!-- jQuery Link -->
 <script src="https://code.jquery.com/jquery.js"></script>
