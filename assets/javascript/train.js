@@ -54,10 +54,18 @@ database.ref().on("value", function(snapshot){
     });
 });
 // addRow function that displays the database information into the dataTable div
-function addRow (tnme, dst, ttme, frqy){
+function addRow (tnme, dst, traintime, frqy, minTilTrain){
+  var timeStamp = moment();
+  var trainTimeFormatted = moment(traintime, "HH:mm");
+  var frequencyFormatted = moment(frequency, "HH:mm");
+  //console.log(timeStamp);
+  console.log(trainTimeFormatted);
+  console.log(trainTimeFormatted.isValid());
 
-    // var convertedStart = moment(new Date(srt));
-    // var monthsWorked = -(moment(convertedStart).diff(moment(), "months"));
+var diffTime = moment().diff(trainTimeFormatted, "minutes");
+console.log(diffTime);
+var tRemainder= diffTime % frqy; 
+console.log(tRemainder);
   // add on a new tr and td into the div with id dataTable when information is submitted
   $('#dataTable').append(  
     // create table row
@@ -65,13 +73,13 @@ function addRow (tnme, dst, ttme, frqy){
       // create table data with train name
       '<td>' + tnme + '</td>' +  
       // create table data with destination              
-      '<td>' + dst + '</td>' +  
-      // create table data with train time               
-      '<td>' + ttme + '</td>' +      
+      '<td>' + dst + '</td>' +       
       // create table data with frequency              
       '<td>' + frqy + '</td>' + 
+      // create table data with train time               
+      '<td>' + traintime + '</td>' + 
       // create table data with minutes away  
-      '<td>' +  + '</td>' + 
+      '<td>' + tRemainder+ '</td>' + 
     // end the table row      
     '</tr>')
 };

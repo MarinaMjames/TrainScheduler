@@ -1,3 +1,31 @@
+body {
+	background-image: url(https://cloud.githubusercontent.com/assets/26077051/25913740/d818c380-3589-11e7-964a-b4b67078d14c.png);
+}
 h1, p{
 	text-align: center;
+}
+th {
+	font-weight: bold;
+}
+label{
+	margin-left: 10px;
+}
+#submitBtn{
+	background-color: #cc33ff;	
+	border-color: #cc33ff;
+}
+.jumbotron{
+	background-color: DimGray; 
+	color: #cc33ff; 
+}
+.panel-heading{
+	text-align: center;
+	font-size: 40px;
+}
+.panel-primary .panel-heading {
+	background-color: #cc33ff;	
+	border-color: #cc33ff;
+}
+.panel-primary {
+	border-color: #cc33ff;
 }
