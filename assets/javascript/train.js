@@ -4,40 +4,39 @@ $( document ).ready(function() {
 });
 
 // Initialize Firebase
-var config = {
-  apiKey: "AIzaSyA3HbF_LrnmFmGY8MJjwAU_y4S5_6QD5fc",
-  authDomain: "train-scheduler-e1d2d.firebaseapp.com",
-  databaseURL: "https://train-scheduler-e1d2d.firebaseio.com",
-  projectId: "train-scheduler-e1d2d",
-  storageBucket: "train-scheduler-e1d2d.appspot.com",
-  messagingSenderId: "561603915711"
-};
+  var config = {
+    apiKey: "AIzaSyBvxJWvKWo3aqvMMND4O83PbhVH5La0BP4",
+    authDomain: "train-schedule-96108.firebaseapp.com",
+    databaseURL: "https://train-schedule-96108.firebaseio.com",
+    projectId: "train-schedule-96108",
+    storageBucket: "train-schedule-96108.appspot.com",
+    messagingSenderId: "789111280326"
+  };
   firebase.initializeApp(config);
 
 // Create a variable to reference the database
-    var database = firebase.database();
+
     // Initial Values
-    var trainName = "";
+    var name = "";
     var destination = "";
-    var trainTime = "";
+    var time = "";
     var frequency = "";
 
+    var database = firebase.database();
 // Capture Button Click
-  $("#submitBtn").on("click", function() {
+  $("#submitBtn").on("click", function(event) {
     // Don't refresh the page!
     event.preventDefault();
 
-    console.log("I was clicked!!!!");
-
-      trainName = $("#trainName").val().trim();
-      destination = $("#destination").val().trim();
-      trainTime = $("#trainTime").val().trim();
-      frequency = $("#frequency").val().trim();
+      name = $("#trainNameInput").val().trim();
+      destination = $("#destinationInput").val().trim();
+      time = $("#trainTimeInput").val().trim();
+      frequency = $("#frequencyInput").val().trim();
 
       database.ref().push({
-        "TrainName": trainName,
+        "TrainName": name,
         "Destination": destination,
-        "TrainTime": trainTime,
+        "TrainTime": time,
         "Frequency": frequency
       });
     });
@@ -48,23 +47,22 @@ var config = {
     var svKeys = Object.keys(sv);
     var objLen = svKeys.length - 1;
 
-    $("#empTable").empty();
+    $("#dataTable").empty();
 
     svKeys.forEach(function(lineItem){
-      console.log(sv[lineItem].trainName, sv[lineItem].destination, sv[lineItem].trainTime, sv[lineItem].frequency);
-      addRow(sv[lineItem].trainName, sv[lineItem].destination, sv[lineItem].trainTime, sv[lineItem].frequency);
+      console.log(sv[lineItem].name, sv[lineItem].destination, sv[lineItem].time, sv[lineItem].frequency);
+      addRow(sv[lineItem].name, sv[lineItem].destination, sv[lineItem].time, sv[lineItem].frequency);
     });
 
   });
 
-  function addRow (){
-
+  function addRow (tnme, dst, ttme, frqy){
 
     $('#dataTable').append(  
       '<tr>' + 
-        '<td>' + trainName + '</td>' +                
-        '<td>' + destination + '</td>' +                 
-        '<td>' + trainTime + '</td>' +                    
-        '<td> $' + frequency + '</td>' +               
+        '<td>' + tnme + '</td>' +                
+        '<td>' + dst + '</td>' +                 
+        '<td>' + ttme + '</td>' +                    
+        '<td>' + frqy + '</td>' +               
       '</tr>')
     };
